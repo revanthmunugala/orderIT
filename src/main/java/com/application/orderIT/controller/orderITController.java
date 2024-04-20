@@ -66,4 +66,10 @@ public class orderITController {
         return userRecordService.addUser(userRecord);
     }
 
+    @GetMapping("signin")
+    public String authenticateUser(@RequestParam String username, @RequestParam String password)
+    {
+        return userRecordService.authenticateUser(username,password);
+    }
+
 }

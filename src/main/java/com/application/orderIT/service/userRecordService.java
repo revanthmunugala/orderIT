@@ -33,4 +33,23 @@ public class userRecordService {
             return false;
         }
     }
+
+    public String authenticateUser(String username, String password) {
+        try {
+            userRecord curRecord = repository.findByuserNamePassword(username, password);
+            if (curRecord != null) {
+                return "200";
+            }
+
+            curRecord = repository.findByuserName(username);
+            if (curRecord != null) {
+                return "300";
+            }
+            return "400";
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            return "400";
+        }
+    }
 }
